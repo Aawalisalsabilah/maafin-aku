@@ -72,7 +72,7 @@ async function login(){
       headers:{apikey:SUPABASE_ANON_KEY,"Content-Type":"application/json"},
       body:JSON.stringify({email:$("email").value.trim(),password:$("pass").value})});
     const j=await r.json();
-    if(!r.ok||!j.access_token){$("err").textContent="Email atau password salah.";return}
+    if(!r.ok||!j.access_token){$("err").textContent=(j.error_description||j.msg||j.message||"Gagal masuk")+" ("+r.status+")";return}
     token=j.access_token;sessionStorage.setItem("tk",token);open_();
   }catch(e){$("err").textContent="Gagal terhubung."}
 }
