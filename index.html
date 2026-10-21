@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maafin Aku Dong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3b1f2b;--soft:#8a5a6c;--a:#ff4f81;--b:#ff9db8;--card:rgba(255,255,255,.72);--line:rgba(255,255,255,.85);--field:rgba(255,226,236,.6);--bg1:#ffe4ec;--bg2:#ffd3e6;--bg3:#e6dcff;--sh:rgba(255,79,129,.25);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#ffe9ef;--soft:#d9a5b8;--card:rgba(52,28,42,.72);--line:rgba(255,255,255,.1);--field:rgba(255,255,255,.07);--bg1:#2a1420;--bg2:#2d1830;--bg3:#1f1a3a;--sh:rgba(255,79,129,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#ffe9ef;--soft:#d9a5b8;--card:rgba(52,28,42,.72);--line:rgba(255,255,255,.1);--field:rgba(255,255,255,.07);--bg1:#2a1420;--bg2:#2d1830;--bg3:#1f1a3a;--sh:rgba(255,79,129,.35);color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--bg1),var(--bg2) 50%,var(--bg3)) fixed;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:24px 16px;overflow-x:hidden;position:relative}
+.wrap{width:100%;max-width:420px;position:relative;z-index:1}
+.card{background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:32px;padding:34px 26px 28px;text-align:center;box-shadow:0 24px 60px -20px var(--sh),0 2px 0 rgba(255,255,255,.5) inset;animation:in .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(18px) scale(.97)}}
+.icon{width:84px;height:84px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--b),var(--a));box-shadow:0 14px 30px -8px var(--sh),0 0 0 8px rgba(255,79,129,.12);animation:beat 2.2s ease-in-out infinite}
+.icon svg{width:38px;height:38px;fill:#fff}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.09)}24%{transform:scale(1)}36%{transform:scale(1.06)}}
+h1{font-size:22px;font-weight:700;margin:0 0 10px;letter-spacing:-.3px;line-height:1.3}
+p{line-height:1.65;margin:8px 0;font-size:14.5px}
+.soft{color:var(--soft);font-size:13px}
+.msg{background:var(--field);border-radius:20px;padding:18px;text-align:left;font-size:14px;line-height:1.75;margin:16px 0 22px}
+.row{display:flex;gap:14px;justify-content:center;align-items:center;min-height:110px;position:relative;flex-wrap:wrap}
+button{font:inherit;font-weight:600;font-size:15px;border:0;border-radius:999px;padding:14px 28px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--a),#ff7a9e);box-shadow:0 12px 24px -8px var(--sh);transition:transform .2s,box-shadow .2s}
+button:hover{box-shadow:0 16px 28px -8px var(--sh)}
+button:active{transform:scale(.96)}
+button.ghost{background:var(--field);color:var(--ink);box-shadow:none;border:1px solid var(--line)}
+#no{position:relative;transition:transform .25s cubic-bezier(.3,1.4,.5,1)}
+#yes{transition:transform .25s}
+.opts{display:grid;gap:10px;margin:16px 0;text-align:left}
+.opts label{display:flex;gap:12px;align-items:center;background:var(--field);padding:13px 16px;border-radius:16px;cursor:pointer;font-size:14px;font-weight:500;border:1.5px solid transparent;transition:.2s}
+.opts input{display:none}
+.opts .ck{width:22px;height:22px;border-radius:50%;border:2px solid var(--b);flex:none;display:grid;place-items:center;transition:.2s}
+.opts .ck svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.opts label:has(input:checked){border-color:var(--a);background:rgba(255,79,129,.12)}
+.opts label:has(input:checked) .ck{background:var(--a);border-color:var(--a)}
+.opts label:has(input:checked) .ck svg{opacity:1}
+textarea,input.f{width:100%;border:1.5px solid var(--line);border-radius:16px;padding:14px;font:inherit;font-size:14px;background:var(--field);color:var(--ink);margin:6px 0;outline:none;transition:.2s}
+textarea{min-height:90px;resize:vertical}
+textarea:focus,input.f:focus{border-color:var(--a);box-shadow:0 0 0 4px rgba(255,79,129,.15)}
+.hide{display:none!important}
+.pop{position:fixed;pointer-events:none;animation:fly 1.8s ease-out forwards;z-index:5}
+.pop svg{width:100%;height:100%}
+@keyframes fly{to{transform:translateY(-75vh) rotate(50deg);opacity:0}}
+.bg svg{width:100%;height:100%}
+.bg{position:fixed;pointer-events:none;opacity:.18;animation:drift linear infinite}
+@keyframes drift{from{transform:translateY(105vh) rotate(0)}to{transform:translateY(-15vh) rotate(40deg)}}
+.item{background:var(--field);border-radius:18px;padding:14px 16px;margin:10px 0;text-align:left;font-size:13px;line-height:1.6}
+.tag{display:inline-block;background:linear-gradient(135deg,var(--a),#ff7a9e);color:#fff;border-radius:99px;padding:2px 12px;font-size:11px;font-weight:600}
+a.wa{display:inline-block;color:#fff;font-weight:600;font-size:15px;text-decoration:none;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--a),#ff7a9e);box-shadow:0 12px 24px -8px var(--sh)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="heart" viewBox="0 0 24 24"><path d="M12 21.2l-1.3-1.2C5.4 15.2 2 12.1 2 8.3 2 5.2 4.4 3 7.4 3c1.7 0 3.4.8 4.6 2.1C13.2 3.8 14.900 3 16.600 3 19.600 3 22 5.200 22 8.300c0 3.800-3.400 6.900-8.700 11.700L12 21.200z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><path d="M3 6.500A2.500 2.500 0 015.500 4h13A2.500 2.500 0 0121 6.500v11a2.500 2.500 0 01-2.500 2.500h-13A2.500 2.500 0 013 17.500v-11zm2.300.2l6.700 5.100 6.700-5.100a.5.500 0 00-.2 0h-13a.5.5 0 00-.2 0z"/></symbol>
+<symbol id="star" viewBox="0 0 24 24"><path d="M12 2l2.400 6.600L21 11l-6.600 2.400L12 20l-2.400-6.600L3 11l6.600-2.400L12 2z"/></symbol>
+</defs></svg>
+<div class="wrap">
+
+<div class="card" id="s1">
+  <div class="icon"><svg><use href="#heart"/></svg></div>
+  <h1>Sayang, aku mau ngomong sesuatu...</h1>
+  <div class="msg">
+    Aku tau aku masih egois, selalu nuntut kamu buat selalu ada buat aku, aku kurang ngertiin kamu, atau bahkan bikin kamu kesel dan marah karena hal itu. Aku bener-bener minta maaf sama kamu dan aku janji lain kali ga akan kayak gini lagi. Aku minta maaf banget ya sama kamu.<br><br>
+    Aku cuma pengen kamu luangin waktu buat aku, meskipun cuma 3 jam sehari. Itu pun udah cukup banget buat aku.
+  </div>
+  <button id="next1">Lanjut</button>
+</div>
+
+<div class="card hide" id="s2">
+  <div class="icon"><svg><use href="#mail"/></svg></div>
+  <h1>Jadi...</h1>
+  <p id="q">Kamu mau maafin aku ga?</p>
+  <p class="soft" id="hint">Pilih dengan hati-hati ya</p>
+  <div class="row" id="row">
+    <button id="yes">Maafin</button>
+    <button id="no" class="ghost">Ga</button>
+  </div>
+</div>
+
+<div class="card hide" id="s3">
+  <div class="icon"><svg><use href="#star"/></svg></div>
+  <h1>Yeay, dimaafin!</h1>
+  <p class="soft">Boleh minta syarat dari kamu. Pilih yang kamu mau, boleh lebih dari satu.</p>
+  <div class="opts" id="opts"></div>
+  <textarea id="note" placeholder="Pesan buat aku (boleh marah-marah dikit, aku terima)"></textarea>
+  <p><button id="send">Kirim jawabanku</button></p>
+</div>
+
+<div class="card hide" id="s4">
+  <div class="icon"><svg><use href="#heart"/></svg></div>
+  <h1>Makasih ya, sayang</h1>
+  <p id="doneMsg">Jawabanmu udah masuk. Aku sayang kamu.</p>
+  <div id="fallback" class="hide">
+    <p class="soft">Tinggal satu klik, kirim jawabanmu langsung ke WhatsApp aku.</p>
+    <p><a id="wa" class="wa" target="_blank" rel="noopener">Kirim ke WhatsApp</a></p>
+  </div>
+</div>
+
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const OPTS=["Mau pap lucu","Mau call sambil manjaan","Mau robux","Mau main mole","Mau sendiri dulu dan gamau diganggu"];
+const HEART='<svg viewBox="0 0 24 24"><use href="#heart"/></svg>';
+const STAR='<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
+let nopes=0, picked=[];
+const show=id=>{["s1","s2","s3","s4"].forEach(x=>$(x).classList.toggle("hide",x!==id));window.scrollTo(0,0)};
+
+$("opts").innerHTML=OPTS.map((o,i)=>`<label><input type="checkbox" value="${i}"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></span><span>${o}</span></label>`).join("");
+$("next1").onclick=()=>show("s2");
+
+// hati melayang di background
+const cols=["#ff4f81","#ff9db8","#c9a7ff","#ffb38a"];
+for(let i=0;i<9;i++){
+  const d=document.createElement("div");d.className="bg";const s=16+Math.random()*34;
+  d.style.cssText=`left:${Math.random()*100}vw;width:${s}px;height:${s}px;color:${cols[i%4]};fill:${cols[i%4]};animation-duration:${14+Math.random()*16}s;animation-delay:-${Math.random()*20}s`;
+  d.innerHTML=HEART;document.body.appendChild(d);
+}
+
+const lines=["Yakin?","Coba pikir lagi dong...","Aku udah usaha loh","Tombolnya kabur, itu tanda","Ayolah sayang...","Klik yang satunya aja ya"];
+function dodge(e){
+  if(e&&e.preventDefault)e.preventDefault();
+  nopes++;
+  const b=$("no"), r=$("row").getBoundingClientRect();
+  const x=(Math.random()-.5)*Math.min(240,r.width), y=(Math.random()-.5)*150;
+  b.style.transform=`translate(${x}px,${y}px) scale(${Math.max(.45,1-nopes*.1)})`;
+  $("hint").textContent=lines[Math.min(nopes-1,lines.length-1)];
+  $("yes").style.transform=`scale(${Math.min(1.8,1+nopes*.14)})`;
+  if(nopes>=6){b.textContent="Iya deh";b.onclick=()=>$("yes").click();b.onmouseenter=null;b.ontouchstart=null}
+}
+$("no").onmouseenter=dodge;$("no").ontouchstart=dodge;$("no").onclick=dodge;
+
+function confetti(){
+  for(let i=0;i<26;i++){
+    const s=document.createElement("span");s.className="pop";const z=14+Math.random()*22;
+    s.style.cssText=`left:${Math.random()*100}vw;top:${60+Math.random()*40}vh;width:${z}px;height:${z}px;fill:${cols[i%4]};animation-delay:${Math.random()*.5}s`;
+    s.innerHTML=i%3?HEART:STAR;document.body.appendChild(s);setTimeout(()=>s.remove(),2600);
+  }
+}
+$("yes").onclick=()=>{confetti();show("s3")};
+
+// ====== ISI DUA BARIS INI (Supabase > Project Settings > API) ======
+const SUPABASE_URL="ISI_URL_SUPABASE_KAMU";
+const SUPABASE_ANON_KEY="ISI_ANON_KEY_KAMU";
+
+function summary(){
+  const ps=picked.map(i=>OPTS[i]).join(", ")||"(ga minta apa-apa)";
+  return `Aku maafin kamu\nSyarat: ${ps}\nPesan: ${$("note").value.trim()||"-"}\n(Aku sempet nolak ${nopes}x)`;
+}
+$("send").onclick=async()=>{
+  picked=[...document.querySelectorAll("#opts input:checked")].map(i=>+i.value);
+  const text=summary();
+  let saved=false;
+  try{
+    const r=await fetch(SUPABASE_URL+"/rest/v1/answers",{
+      method:"POST",
+      headers:{apikey:SUPABASE_ANON_KEY,Authorization:"Bearer "+SUPABASE_ANON_KEY,"Content-Type":"application/json",Prefer:"return=minimal"},
+      body:JSON.stringify({answer:"maafin",nopes,syarat:picked.map(i=>OPTS[i]),note:$("note").value.trim().slice(0,1000)})
+    });
+    saved=r.ok;
+  }catch(e){}
+  show("s4");confetti();
+  $("fallback").classList.remove("hide");
+  $("wa").href="https://wa.me/6282343956801?text="+encodeURIComponent(text);
+  $("doneMsg").textContent=saved?"Jawabanmu udah masuk. Terakhir, kabarin aku langsung ya.":"Satu langkah lagi ya.";
+};
+</script>
+</body>
+</html>
